@@ -19,7 +19,7 @@ data <- read_csv(here('data/GTEX_vs_TCGA_SIN3B.csv'))
 my_comparisons <- list(c("GTEX", "TCGA")) 
 box <- ggviolin(data, x = "Study", y = "SIN3B_expression", fill = "Study", add = "boxplot")+
   stat_compare_means(comparisons = my_comparisons, method = "t.test", label.y = 14, label = "p.signif")+
-  scale_fill_lancet() + # Lancet palette 
+  # scale_fill_lancet() + # Lancet palette 
   ggtitle("Normal Skin vs Cutaneous Melanoma") + 
   xlab("Study") + 
   ylab("SIN3B expression (RNA seq) \n RSEM count DESEq2 standardized \n log2(count +1)") + 

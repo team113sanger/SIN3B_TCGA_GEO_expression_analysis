@@ -25,7 +25,7 @@ my_comparisons <- list(c("GTEX", "TCGA"))
 box <- ggviolin(data.merge, "Study", "value", fill = "Study", add = "boxplot")+
   facet_wrap(~variable, nrow = 1)+
   stat_compare_means(comparisons = my_comparisons, method = "t.test", label.y = 88, label = "p.signif")+
-  scale_fill_lancet() + # Lancet palette  
+  #scale_fill_lancet() + # Lancet palette  
   ggtitle("Normal Skin vs Cutaneous Melanoma") + 
   ylab("SIN3B protein-coding \ntranscripts (RNA seq) \n Isoform Frequency (%)") + 
   theme(plot.title = element_text(hjust = 0.5))
