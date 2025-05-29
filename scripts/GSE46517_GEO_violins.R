@@ -22,7 +22,7 @@ box <- ggviolin(data, x = "Group", y = "SIN3B_Expression", fill = "Group", add =
   stat_compare_means(comparisons = my_comparisons, method = "t.test", label.y = c(8.5, 9.0, 9.5), label = "p.signif")+
   scale_x_discrete(limits = c("Nevus", "Primary Melanoma", "Metastatic Melanoma")) +
   scale_fill_discrete(limits = c("Nevus", "Primary Melanoma", "Metastatic Melanoma")) +
-  scale_fill_lancet() + #Lancet palette
+#   scale_fill_lancet() + #Lancet palette
   ggtitle("GSE46517") + 
   xlab("Tissue Type") + 
   ylab("Standardized SIN3B expression \n log2(count)") + 
