@@ -6,15 +6,17 @@ library(ggpubr)
 library(reshape2)
 library(munsell)
 library(ggsci) # Color palettes inspired by scientific journals
-
-setwd("~/Paper SIN3B/Figures")
+library(here)
+library(tidyverse)
 
 # Read table
-data <- read.table('GTEX_vs_TCGA_SIN3B_transcripts.csv',sep = ';', header = TRUE, row.names = ) 
+data <- read_csv(here('data/GTEX_vs_TCGA_SIN3B_transcripts.csv'))
 
 # Retrieve protein coding transcripts
 data.merge <- melt(data,id.vars='Study', measure.vars=c('SIN3B_201','SIN3B_209','SIN3B_202', 'SIN3B_208', 'SIN3B_206'))
 
+data.merge <- data |> pivot_longer(cols = contains("SIN3B"),
+           names_to = 'variable', values_to = 'value')
 # Violin plots with box plots inside
 # Change fill color by Study
 # Add boxplot with white fill color
@@ -33,3 +35,7 @@ box
 # Title to the center
 box <- box + theme(plot.title = element_text(hjust = 0.5))
 box
+
+png(here('results/figures/Xenabrowser_GTEX_VS_TCGA_violin_plot_transcripts.png'), width = 800, height = 600)
+box
+dev.off()
